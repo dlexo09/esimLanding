@@ -1,5 +1,7 @@
 :root{
     --primary-color: #FF8800;
+    --secondary-color: #0068FF;
+    --bg-color: #082B5E;
 }
 @font-face{
     font-family: 'Montserrat';
@@ -45,10 +47,16 @@ h2{
 font-size: 40px;
 font-weight: 700;
 }
-
+h3{
+font-size: 24px;
+}
 h4{
 font-size: 20px;
 font-weight: 600;
+}
+.subtitle-special{
+    font-size: 24px;
+    font-weight: 500;
 }
 
 /* Contenedores */

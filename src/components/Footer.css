@@ -1,0 +1,10 @@
+.footer-container{
+    background-color: var(--bg-color);
+}
+.links-txt{
+    color: #fff;
+    transition: color 0.3s ease;
+}
+.links-txt:hover{
+    color: #ffffff9d;
+}
