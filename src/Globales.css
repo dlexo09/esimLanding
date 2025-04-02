@@ -34,8 +34,30 @@ ul{
     padding: 0;
 }
 p, h1, h2, h3, h4{
-    margin: 0 !important;
+    margin: 0;
 }
 a{
     text-decoration: none;
+}
+
+/* Titles */
+h2{
+font-size: 40px;
+font-weight: 700;
+}
+
+h4{
+font-size: 20px;
+font-weight: 600;
+}
+
+/* Contenedores */
+.container-sm{
+    width: 100%;
+    max-width: 600px;
+}
+.container-ssm{
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
 }

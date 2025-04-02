@@ -1,6 +1,20 @@
+.megamovil-logo{
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+    background-color: #dce3eb5f;
+    padding: 15px;
+    border-radius: 8px;
+}
 .user-data-container{
     width: 100%;
-    max-width: 400px;
+    max-width: 325px;
     margin: 0 auto;
-    border: 1px solid var(--primary-color);
 }
+.user-data-container{
+    font-size: 20px;
+}
+.user-data-container .data-dinamic{
+    font-weight: 700;
+}
+
