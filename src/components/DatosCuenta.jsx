@@ -2,7 +2,7 @@ import "./DatosCuenta.css";
 
 const DatosCuenta = () => {
   return (
-    <div className="container mt-5">
+    <div className="container">
 
       <div className="text-center">
         <img src="/img/megamovil-logo.png" alt="Mega Móvil LOGO" className="megamovil-logo mb-5" />
