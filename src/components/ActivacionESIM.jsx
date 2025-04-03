@@ -3,6 +3,7 @@ import "./ActivacionESIM.css";
 
 const ActivacionESIM = () => {
   const [qrCode, setQrCode] = useState(null);
+  const [copiedCode, setCopiedCode] = useState(""); // Estado para rastrear el código copiado
 
   useEffect(() => {
     // Cargar datos desde el archivo JSON
@@ -17,7 +18,8 @@ const ActivacionESIM = () => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        alert("Código copiado al portapapeles");
+        setCopiedCode(text); // Actualiza el estado con el código copiado
+        setTimeout(() => setCopiedCode(""), 2000); // Limpia el estado después de 2 segundos
       })
       .catch((err) => {
         console.error("Error al copiar el texto: ", err);
@@ -51,16 +53,38 @@ const ActivacionESIM = () => {
             <div className="manual-code code-ios d-flex flex-column align-items-center justify-content-between">
               <h4 className="mb-2">iOs</h4>
               <p id="ios-code">nghsd832hnesdu82054j ndf65784hnksfc8235hna dij8245j3nkjfcnhfeu8853 nfkcssnky58</p>
-              <button className="mt-3 btn-activation-code" onClick={() => copyToClipboard("nghsd832hnesdu82054jndf65784hnksfc8235hnadij8245j3nkjfcnhfeu8853nfkcssnky58")}>
+              <button
+                className="mt-3 btn-activation-code d-flex align-items-center"
+                onClick={() =>
+                  copyToClipboard(
+                    "nghsd832hnesdu82054jndf65784hnksfc8235hnadij8245j3nkjfcnhfeu8853nfkcssnky58"
+                  )
+                }
+              >
                 Copiar
+                {copiedCode ===
+                  "nghsd832hnesdu82054jndf65784hnksfc8235hnadij8245j3nkjfcnhfeu8853nfkcssnky58" && (
+                  <i className="fas fa-check animated-check"></i>
+                )}
               </button>
             </div>
 
             <div className="manual-code code-ios d-flex flex-column align-items-center justify-content-between">
               <h4>Android</h4>
               <p id="android-code">ed73278bjdcau23nkcsbj 4jnkduh734iuah djbn3874623</p>
-              <button className="mt-3 btn-activation-code" onClick={() => copyToClipboard("ied73278bjdcau23nkcsbjhq772634jnkduh734iuahdjbn3874623")}>
+              <button
+                className="mt-3 btn-activation-code d-flex align-items-center"
+                onClick={() =>
+                  copyToClipboard(
+                    "ied73278bjdcau23nkcsbjhq772634jnkduh734iuahdjbn3874623"
+                  )
+                }
+              >
                 Copiar
+                {copiedCode ===
+                  "ied73278bjdcau23nkcsbjhq772634jnkduh734iuahdjbn3874623" && (
+                  <i className="fas fa-check animated-check"></i>
+                )}
               </button>
             </div>
           </div>
