@@ -2,15 +2,15 @@ import { useEffect, useState } from "react";
 import "./ActivacionESIM.css";
 
 const ActivacionESIM = () => {
-  const [qrCode, setQrCode] = useState(null);
+  const [data, setData] = useState(null); // Estado para almacenar todos los datos
   const [copiedCode, setCopiedCode] = useState(""); // Estado para rastrear el código copiado
 
   useEffect(() => {
     // Cargar datos desde el archivo JSON
     fetch("/datos.json")
       .then((response) => response.json())
-      .then((data) => setQrCode(data.qrCode))
-      .catch((error) => console.error("Error al cargar el QR:", error));
+      .then((data) => setData(data)) // Guarda todos los datos en el estado
+      .catch((error) => console.error("Error al cargar los datos:", error));
   }, []);
 
   // Función para copiar texto al portapapeles
@@ -26,6 +26,10 @@ const ActivacionESIM = () => {
       });
   };
 
+  if (!data) {
+    return <p>Cargando datos...</p>;
+  }
+
   return (
     <div className="activation-container mt-5">
       <h4 className="container-sm text-center">
@@ -35,9 +39,8 @@ const ActivacionESIM = () => {
 
       <div className="row align-items-center justify-content-center mt-3">
         <div className="col-md-5 qr-activation-code justify-content-end d-flex align-items-center">
-          {/* Mostrar el QR dinámico */}
-          {qrCode ? (
-            <img src={qrCode} alt="QR" />
+          {data.qrCode ? (
+            <img src={data.qrCode} alt="QR" />
           ) : (
             <p>Cargando QR...</p>
           )}
@@ -52,18 +55,13 @@ const ActivacionESIM = () => {
           <div className="manual-activation-code d-flex justify-content-center flex-wrap mt-4">
             <div className="manual-code code-ios d-flex flex-column align-items-center justify-content-between">
               <h4 className="mb-2">iOs</h4>
-              <p id="ios-code">nghsd832hnesdu82054j ndf65784hnksfc8235hna dij8245j3nkjfcnhfeu8853 nfkcssnky58</p>
+              <p id="ios-code">{data.manualActivationiOS}</p>
               <button
                 className="mt-3 btn-activation-code d-flex align-items-center"
-                onClick={() =>
-                  copyToClipboard(
-                    "nghsd832hnesdu82054jndf65784hnksfc8235hnadij8245j3nkjfcnhfeu8853nfkcssnky58"
-                  )
-                }
+                onClick={() => copyToClipboard(data.manualActivationiOS)}
               >
                 Copiar
-                {copiedCode ===
-                  "nghsd832hnesdu82054jndf65784hnksfc8235hnadij8245j3nkjfcnhfeu8853nfkcssnky58" && (
+                {copiedCode === data.manualActivationiOS && (
                   <i className="fas fa-check animated-check"></i>
                 )}
               </button>
@@ -71,18 +69,13 @@ const ActivacionESIM = () => {
 
             <div className="manual-code code-ios d-flex flex-column align-items-center justify-content-between">
               <h4>Android</h4>
-              <p id="android-code">ed73278bjdcau23nkcsbj 4jnkduh734iuah djbn3874623</p>
+              <p id="android-code">{data.manualActivationAndroid}</p>
               <button
                 className="mt-3 btn-activation-code d-flex align-items-center"
-                onClick={() =>
-                  copyToClipboard(
-                    "ied73278bjdcau23nkcsbjhq772634jnkduh734iuahdjbn3874623"
-                  )
-                }
+                onClick={() => copyToClipboard(data.manualActivationAndroid)}
               >
                 Copiar
-                {copiedCode ===
-                  "ied73278bjdcau23nkcsbjhq772634jnkduh734iuahdjbn3874623" && (
+                {copiedCode === data.manualActivationAndroid && (
                   <i className="fas fa-check animated-check"></i>
                 )}
               </button>
