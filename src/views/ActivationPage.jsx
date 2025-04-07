@@ -4,7 +4,7 @@ import { Link } from "react-router-dom"; // Importa Link para la navegación
 const ActivationPage = () => {
   return (
     <>
-      <div className="container vh-100 d-flex flex-column justify-content-center align-items-center text-center">
+      <div className="vh-100 d-flex flex-column justify-content-center align-items-center text-center">
         <img src="./img/megamovil-logo.png" alt="Mega Móvil LOGO" className="logo-megamovil-principal mb-5" />
         <h1>Bienvenido a la comunidad Mega móvil</h1>
         <p className="mt-3">

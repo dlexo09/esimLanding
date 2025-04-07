@@ -1,20 +1,88 @@
 .megamovil-logo{
     width: 100%;
-    max-width: 350px;
+    max-width: 550px;
     margin: 0 auto;
-    background-color: #dce3eb5f;
     padding: 15px;
     border-radius: 8px;
 }
 .user-data-container{
     width: 100%;
-    max-width: 325px;
+    max-width: 780px;
+    border: 2px solid var(--txt-color);
     margin: 0 auto;
+    border-radius: 50px;
+    padding: 20px;
 }
-.user-data-container{
-    font-size: 20px;
+.user-data-content{
+    width: 100%;
+    max-width: 450px;
+    margin: 0 auto;
+    
 }
-.user-data-container .data-dinamic{
+.data-txt-general-title{
+    font-size: clamp(1.5rem, 1.4286rem + 0.3571vw, 1.75rem);
+    font-weight: 700;
+    line-height: 1.2;
+}
+.data-txt-general-title::first-letter{
+    text-transform: uppercase;
+}
+.data-txt-container{
+    font-size: clamp(1rem, 0.9286rem + 0.3571vw, 1.25rem);
+    display: flex;
+    column-gap: 50px;
+    align-items: center;
+}
+.data-txt{
+    font-weight: 700;
+    width: 100%;
+    max-width: 200px;
+}
+.data-txt-title{
+    width: 100%;
+    max-width: 120px;
+    text-align: end;
+}
+.line{
+    width: 90%;
+    height: 1px;
+    background-color: var(--txt-color);
+    margin: 20px auto;
+}
+.data-txt-plan{
+    font-size: clamp(1.25rem, 1.1786rem + 0.3571vw, 1.5rem);
+    text-align: center;
     font-weight: 700;
 }
+.data-txt-plan p, .data-txt-plan p span{
+    color: var(--secondary-color) !important;
+    line-height: 1.2;
+}
+
+@media screen and (max-width: 767px) {
+    .data-txt-container{
+        flex-direction: column;
+    
+    }
+    .data-txt-title{
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
+    .data-txt{
+        text-align: center;
+        width: 100%;
+        max-width: 100%;
+    }
+    .line{
+        width: 100%;
+    }
+    
+}
+@media screen and (max-width: 374px) {
+    .user-data-container {
+        padding: 20px 10px;
+    }
+}
+
 

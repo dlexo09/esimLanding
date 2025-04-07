@@ -26,15 +26,15 @@ const FAQ = () => {
   ];
 
   return (
-    <div className="container mt-5">
+    <div className="container faq-container">
       <h2 className="subtitle-special text-center">Preguntas frecuentes</h2>
 
-      <div className="accordion mt-4" id="faqAccordion">
+      <div className="accordion mt-4 faq-content" id="faqAccordion">
         {faqs.map((faq) => (
-          <div className="accordion-item" key={faq.id}>
+          <div className="accordion-item faq-item" key={faq.id}>
             <h2 className="accordion-header" id={`heading${faq.id}`}>
               <button
-                className="accordion-button collapsed"
+                className="accordion-button faq-button collapsed"
                 type="button"
                 data-bs-toggle="collapse"
                 data-bs-target={`#collapse${faq.id}`}

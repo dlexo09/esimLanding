@@ -1,5 +1,27 @@
 .faq-container{
+    margin-top: 100px;
+}
+.faq-content{
     width: 100%;
-    max-width: 750px;
-    margin: 0 auto;
+    max-width: 780px;
+    margin: 0 auto !important;
+}
+.accordion-item{
+    border: 2px solid var(--txt-color) !important;
+    margin-top: 10px;
+    border-radius: 50px !important;
+}
+.accordion-button:not(.collapsed){
+    background-color: #fff;
+box-shadow: none !important;
+
+}
+.accordion-button{
+    box-shadow: none !important; 
+    font-size: 20px !important;
+    font-weight: 600;
+
+}
+.accordion-item>.accordion-header .accordion-button{
+    background-color: transparent;
 }

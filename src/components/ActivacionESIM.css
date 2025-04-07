@@ -1,33 +1,43 @@
+.activation-code-container{
+  margin-top: 80px;
+}
 .activation-container{
     width: 100%;
     max-width: 900px;
-    margin: 0 auto;
+    margin: 0 auto !important;
 }
+
 .qr-activation-code img{
     width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
     max-width: 330px;
+  border: 2px solid var(--txt-color);
+  border-radius: 50px;
+  padding: 10px;
 }
 .manual-code{
     width: 100%;
     max-width: 200px;
 }
-.manual-code{
-font-size: 14px;
-}
+
 .manual-activation-code{
-    gap: 30px;
+    gap: 20px;
+}
+.activation-code-title{
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1.2;
 }
 .activation-code-txt{
-    font-size: 20px;
+  font-size: 20px;
 }
-.btn-activation-code{
-    border: none;
-    border-radius: 50px;
-    padding: 8px 30px;
-}
+    .manual-code{
+background-color: #f8f8f8;
+border-radius: 30px;
+padding: 15px;
+    }
 
 @keyframes fill-check {
     0% {
@@ -46,10 +56,33 @@ font-size: 14px;
   
   .animated-check {
     animation: fill-check 0.4s ease-in-out;
-    color: #28a745;
+    color: #fff;
     font-size: 1.2rem;
     margin-left: 10px;
   }
+  .manual-code p{
+    font-size: 12px;
+    font-weight: 500;
+  } 
+  .manual-code h4{
+    font-weight: 700;
+  }
+  .btn-activation-code{
+    background-color: var(--secondary-color);
+    color: #fff;
+    font-weight: 700;
+    border: none;
+    border-radius: 50px;
+    padding: 5px 40px;
+  }
 
+@media screen and (max-width: 425px) {
+  .manual-code{
+    max-width: 100%;
+    height: 200px;
+  }
+
+  
+}
 
   

@@ -1,10 +1,34 @@
-.footer-container{
-    background-color: var(--bg-color);
-}
+
 .links-txt{
-    color: #fff;
+    color: var(--txt-color);
     transition: color 0.3s ease;
 }
-.links-txt:hover{
-    color: #ffffff9d;
+
+.contact-container{
+    width: 100%;
+    max-width: 780px;
+    margin:  0 auto;
+    display: flex;
+    justify-content: space-center;
+    align-items: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+.contact-section{
+    background-color: #f8f8f8;
+    width: 100%;
+    max-width: 48%;
+    font-size: clamp(0.875rem, 0.8393rem + 0.1786vw, 1rem);
+    font-weight: 600;
+    height: 80px;
+    text-align: center;
+    align-content: center;
+    border-radius: 10px;
+}
+
+@media screen and (max-width: 768px) {
+    .contact-section{
+        max-width: 100%;
+    }
+    
 }

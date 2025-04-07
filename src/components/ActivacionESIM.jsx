@@ -31,14 +31,14 @@ const ActivacionESIM = () => {
   }
 
   return (
-    <div className="activation-container mt-5">
-      <h4 className="container-sm text-center">
+    <div className="container activation-code-container">
+      <h4 className="container-sm text-center mb-5">
         Instala tu E-sim escaneando el código QR desde la configuración de su
         dispositivo móvil.
       </h4>
 
-      <div className="row align-items-center justify-content-center mt-3">
-        <div className="col-md-5 qr-activation-code justify-content-end d-flex align-items-center">
+      <div className="row activation-container d-flex align-items-center justify-content-center mt-3">
+        <div className="col-lg-5 qr-activation-code justify-content-center d-flex align-items-center">
           {data.qrCode ? (
             <img src={data.qrCode} alt="QR" />
           ) : (
@@ -46,14 +46,14 @@ const ActivacionESIM = () => {
           )}
         </div>
 
-        <div className="col-md-6 manual-activation-code-container text-center">
-          <p className="activation-code-txt container-ssm">
+        <div className="col-lg-6 manual-activation-code-container text-center">
+          <p className="activation-code-title container-ssm mt-lg-0 mt-4">
             También puedes instalar de forma manual
           </p>
-          <p className="activation-code-txt mt-3">Código de activación manual</p>
+          <p className="mt-3 activation-code-txt">Código de activación manual</p>
 
           <div className="manual-activation-code d-flex justify-content-center flex-wrap mt-4">
-            <div className="manual-code code-ios d-flex flex-column align-items-center justify-content-between">
+            <div className="manual-code code-ios d-flex flex-column align-items-center justify-content-center justify-content-md-between">
               <h4 className="mb-2">iOs</h4>
               <p id="ios-code">{data.manualActivationiOS}</p>
               <button
@@ -67,11 +67,11 @@ const ActivacionESIM = () => {
               </button>
             </div>
 
-            <div className="manual-code code-ios d-flex flex-column align-items-center justify-content-between">
-              <h4>Android</h4>
+            <div className="manual-code code-ios d-flex flex-column align-items-center justify-content-center justify-content-md-between">
+              <h4 className="mb-2 mb-md-0">Android</h4>
               <p id="android-code">{data.manualActivationAndroid}</p>
               <button
-                className="mt-3 btn-activation-code d-flex align-items-center"
+                className="mt-3 btn-activation-code d-flex text-center align-items-center"
                 onClick={() => copyToClipboard(data.manualActivationAndroid)}
               >
                 Copiar
