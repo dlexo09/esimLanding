@@ -7,7 +7,7 @@ const ActivacionESIM = () => {
 
   useEffect(() => {
     // Cargar datos desde el archivo JSON
-    fetch("/datos.json")
+    fetch("./datos.json")
       .then((response) => response.json())
       .then((data) => setData(data)) // Guarda todos los datos en el estado
       .catch((error) => console.error("Error al cargar los datos:", error));

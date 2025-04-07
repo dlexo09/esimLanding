@@ -6,7 +6,7 @@ const DatosCuenta = () => {
 
   useEffect(() => {
     // Cargar datos desde el archivo JSON
-    fetch("/datos.json")
+    fetch("./datos.json")
       .then((response) => response.json())
       .then((data) => setDatos(data))
       .catch((error) => console.error("Error al cargar los datos:", error));
@@ -20,7 +20,7 @@ const DatosCuenta = () => {
     <div className="container">
 
       <div className="text-center">
-        <img src="/img/megamovil-logo.png" alt="Mega Móvil LOGO" className="megamovil-logo mb-5" />
+        <img src="./img/megamovil-logo.png" alt="Mega Móvil LOGO" className="megamovil-logo mb-5" />
         <h1>Bienvenido a la comunidad Mega móvil</h1>
         <h2>¡Ya tienes tu eSIM!</h2>
       </div>

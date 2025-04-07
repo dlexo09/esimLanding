@@ -6,7 +6,7 @@ import LandingESIM from "./views/LandingESIM";
 
 function App() {
   return (
-    <Router>
+    <Router basename="/pruebas/eSIM">
       <Routes>
         <Route path="/" element={<ActivationPage />} />
         <Route path="/esim" element={<LandingESIM />} />
