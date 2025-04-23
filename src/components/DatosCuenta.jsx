@@ -1,16 +1,23 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./DatosCuenta.css";
 
 const DatosCuenta = () => {
   const [datos, setDatos] = useState(null);
+  const { token } = useParams();
 
   useEffect(() => {
-    // Cargar datos desde el archivo JSON
-    fetch("./datos.json")
+    if (!token) return;
+
+    fetch(`https://tkn-act.megacable.com.mx:6238/api/token/mvno/${token}`, {
+      headers: {
+        Authorization: "Basic bWVnYUlUOjQ3MjNCQzVFQkY2NjRBMQ==", // Reemplaza por tu valor real
+      },
+    })
       .then((response) => response.json())
       .then((data) => setDatos(data))
       .catch((error) => console.error("Error al cargar los datos:", error));
-  }, []);
+  }, [token]);
 
   if (!datos) {
     return <p>Cargando datos...</p>;
@@ -42,10 +49,10 @@ const DatosCuenta = () => {
           <div className="data-txt-container mt-4">
             <p className="data-txt-title">Contrato</p>
             <p
-              data-contract-number={datos.contractNumber}
+              data-contract-number={datos.subscriber}
               className="data-dinamic data-txt"
             >
-              {datos.contractNumber}
+              {datos.subscriber}
             </p>
           </div>
 
@@ -69,10 +76,10 @@ const DatosCuenta = () => {
           <div className="data-txt-container">
             <p className="data-txt-title">Tu número</p>
             <p
-              data-phone-number={datos.phoneNumber}
+              data-phone-number={datos.telephone}
               className="data-dinamic data-txt"
             >
-              {datos.phoneNumber}
+              {datos.telephone}
             </p>
           </div>
         </div>

@@ -9,7 +9,8 @@ function App() {
     <Router basename="/pruebas/eSIM">
       <Routes>
         <Route path="/" element={<ActivationPage />} />
-        <Route path="/esim" element={<LandingESIM />} />
+        <Route path="/:token" element={<ActivationPage />} /> {/* <-- Agrega esta línea */}
+        <Route path="/esim/:token" element={<LandingESIM />} />
       </Routes>
     </Router>
   );

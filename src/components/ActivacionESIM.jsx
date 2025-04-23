@@ -1,25 +1,33 @@
 import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 import "./ActivacionESIM.css";
 
 const ActivacionESIM = () => {
-  const [data, setData] = useState(null); // Estado para almacenar todos los datos
-  const [copiedCode, setCopiedCode] = useState(""); // Estado para rastrear el código copiado
+  const [data, setData] = useState(null);
+  const [copiedCode, setCopiedCode] = useState("");
+  const [loading, setLoading] = useState(true);
+  const [imgError, setImgError] = useState(false);
+  const { token } = useParams();
 
   useEffect(() => {
-    // Cargar datos desde el archivo JSON
-    fetch("./datos.json")
-      .then((response) => response.json())
-      .then((data) => setData(data)) // Guarda todos los datos en el estado
-      .catch((error) => console.error("Error al cargar los datos:", error));
-  }, []);
+    if (!token) return;
 
-  // Función para copiar texto al portapapeles
+    fetch(`https://tkn-act.megacable.com.mx:6238/api/token/mvno/${token}`, {
+      headers: {
+        Authorization: "Basic bWVnYUlUOjQ3MjNCQzVFQkY2NjRBMQ==", // Reemplaza por tu valor real
+      },
+    })
+      .then((response) => response.json())
+      .then((data) => setData(data))
+      .catch((error) => console.error("Error al cargar los datos:", error));
+  }, [token]);
+
   const copyToClipboard = (text) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
-        setCopiedCode(text); // Actualiza el estado con el código copiado
-        setTimeout(() => setCopiedCode(""), 2000); // Limpia el estado después de 2 segundos
+        setCopiedCode(text);
+        setTimeout(() => setCopiedCode(""), 2000);
       })
       .catch((err) => {
         console.error("Error al copiar el texto: ", err);
@@ -39,10 +47,25 @@ const ActivacionESIM = () => {
 
       <div className="row activation-container d-flex align-items-center justify-content-center mt-3">
         <div className="col-lg-5 qr-activation-code justify-content-center d-flex align-items-center">
-          {data.qrCode ? (
-            <img src={data.qrCode} alt="QR" />
+          {imgError ? (
+            <>
+            <p>Error al cargar el QR.</p>
+            </>
+            
           ) : (
-            <p>Cargando QR...</p>
+            <>
+              {loading && <p>Cargando QR...</p>}
+              <img
+                src={data.activation.qrCode}
+                alt="QR"
+                style={{ display: loading ? "none" : "block" }}
+                onLoad={() => setLoading(false)}
+                onError={() => {
+                  setLoading(false);
+                  setImgError(true);
+                }}
+              />
+            </>
           )}
         </div>
 
@@ -55,13 +78,13 @@ const ActivacionESIM = () => {
           <div className="manual-activation-code d-flex justify-content-center flex-wrap mt-4">
             <div className="manual-code code-ios d-flex flex-column align-items-center justify-content-center justify-content-md-between">
               <h4 className="mb-2">iOs</h4>
-              <p id="ios-code">{data.manualActivationiOS}</p>
+              <p id="ios-code">{data.activation.ios}</p>
               <button
                 className="mt-3 btn-activation-code d-flex align-items-center"
-                onClick={() => copyToClipboard(data.manualActivationiOS)}
+                onClick={() => copyToClipboard(data.activation.ios)}
               >
                 Copiar
-                {copiedCode === data.manualActivationiOS && (
+                {copiedCode === data.activation.ios && (
                   <i className="fas fa-check animated-check"></i>
                 )}
               </button>
@@ -69,13 +92,13 @@ const ActivacionESIM = () => {
 
             <div className="manual-code code-ios d-flex flex-column align-items-center justify-content-center justify-content-md-between">
               <h4 className="mb-2 mb-md-0">Android</h4>
-              <p id="android-code">{data.manualActivationAndroid}</p>
+              <p id="android-code">{data.activation.android}</p>
               <button
                 className="mt-3 btn-activation-code d-flex text-center align-items-center"
-                onClick={() => copyToClipboard(data.manualActivationAndroid)}
+                onClick={() => copyToClipboard(data.activation.android)}
               >
                 Copiar
-                {copiedCode === data.manualActivationAndroid && (
+                {copiedCode === data.activation.android && (
                   <i className="fas fa-check animated-check"></i>
                 )}
               </button>
