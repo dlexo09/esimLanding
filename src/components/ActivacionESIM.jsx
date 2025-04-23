@@ -38,6 +38,11 @@ const ActivacionESIM = () => {
     return <p>Cargando datos...</p>;
   }
 
+  // Validar y armar el src base64 del QR
+  const qrBase64 = data.activation.qrCode.startsWith('data:image')
+    ? data.activation.qrCode
+    : `data:image/png;base64,${data.activation.qrCode}`;
+
   return (
     <div className="container activation-code-container">
       <h4 className="container-sm text-center mb-5">
@@ -48,15 +53,12 @@ const ActivacionESIM = () => {
       <div className="row activation-container d-flex align-items-center justify-content-center mt-3">
         <div className="col-lg-5 qr-activation-code justify-content-center d-flex align-items-center">
           {imgError ? (
-            <>
             <p>Error al cargar el QR.</p>
-            </>
-            
           ) : (
             <>
               {loading && <p>Cargando QR...</p>}
               <img
-                src={data.activation.qrCode}
+                src={qrBase64}
                 alt="QR"
                 style={{ display: loading ? "none" : "block" }}
                 onLoad={() => setLoading(false)}
