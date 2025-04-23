@@ -10,22 +10,22 @@ const PasosInstalcion = () => {
 
             <div className="installation-steps d-flex flex-wrap justify-content-center mt-5 text-center">
                 <div className="installation-step">
-                    <img src="./img/step-1.png" alt="Paso 1" />
+                    <img src="../img/step-1.png" alt="Paso 1" />
                     <p>Conéctate a una red WiFi estable</p>
                 </div>
 
                 <div className="installation-step">
-                    <img src="./img/step-2.png" alt="Paso 2" />
+                    <img src="../img/step-2.png" alt="Paso 2" />
                     <p>Ve a configuración en tu dispositivo</p>
                 </div>
 
                 <div className="installation-step">
-                    <img src="./img/step-3.png" alt="Paso 3" />
+                    <img src="../img/step-3.png" alt="Paso 3" />
                     <p>Escanea el código QR o copia y pega los códigos manualmente.</p>
                 </div>
 
                 <div className="installation-step">
-                    <img src="./img/step-4.png" alt="Paso 4" />
+                    <img src="../img/step-4.png" alt="Paso 4" />
                     <p>¡Listo! Configura tu E-Sim</p>
                 </div>
             </div>

@@ -27,7 +27,7 @@ const DatosCuenta = () => {
     <div className="container">
       <div className="text-center">
         <img
-          src="./img/megamovil-logo.png"
+          src="../img/megamovil-logo.png"
           alt="Mega Móvil LOGO"
           className="megamovil-logo mb-5"
         />
