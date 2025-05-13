@@ -39,7 +39,7 @@ const ActivacionESIM = () => {
   }
 
   // Validar y armar el src base64 del QR
-  const qrBase64 = data.activation.qrCode.startsWith('data:image')
+  const qrBase64 = data.activation.qrCode.startsWith("data:image")
     ? data.activation.qrCode
     : `data:image/png;base64,${data.activation.qrCode}`;
 
@@ -75,25 +75,13 @@ const ActivacionESIM = () => {
           <p className="activation-code-title container-ssm mt-lg-0 mt-4">
             También puedes instalar de forma manual
           </p>
-          <p className="mt-3 activation-code-txt">Código de activación manual</p>
 
           <div className="manual-activation-code d-flex justify-content-center flex-wrap mt-4">
-            <div className="manual-code code-ios d-flex flex-column align-items-center justify-content-center justify-content-md-between">
-              <h4 className="mb-2">iOs</h4>
-              <p id="ios-code">{data.activation.ios}</p>
-              <button
-                className="mt-3 btn-activation-code d-flex align-items-center"
-                onClick={() => copyToClipboard(data.activation.ios)}
-              >
-                Copiar
-                {copiedCode === data.activation.ios && (
-                  <i className="fas fa-check animated-check"></i>
-                )}
-              </button>
-            </div>
-
-            <div className="manual-code code-ios d-flex flex-column align-items-center justify-content-center justify-content-md-between">
-              <h4 className="mb-2 mb-md-0">Android</h4>
+            <div className="manual-code d-flex flex-column align-items-center justify-content-center justify-content-md-between">
+              <p className="mt-3 activation-code-txt">
+                Código de activación manual: <br /><br />
+              </p>
+              
               <p id="android-code">{data.activation.android}</p>
               <button
                 className="mt-3 btn-activation-code d-flex text-center align-items-center"

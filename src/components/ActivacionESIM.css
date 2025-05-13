@@ -19,7 +19,6 @@
 }
 .manual-code{
     width: 100%;
-    max-width: 200px;
 }
 
 .manual-activation-code{
@@ -30,9 +29,7 @@
     font-weight: 700;
     line-height: 1.2;
 }
-.activation-code-txt{
-  font-size: 20px;
-}
+
     .manual-code{
 background-color: #f8f8f8;
 border-radius: 30px;
@@ -61,9 +58,12 @@ padding: 15px;
     margin-left: 10px;
   }
   .manual-code p{
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 500;
   } 
+  .activation-code-txt{
+  font-size: 20px !important;
+}
   .manual-code h4{
     font-weight: 700;
   }
