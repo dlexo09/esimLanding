@@ -14,13 +14,17 @@ const ActivacionESIM = () => {
 
     fetch(`https://tkn-act.megacable.com.mx:6238/api/token/mvno/${token}`, {
       headers: {
-        Authorization: "Basic bWVnYUlUOjQ3MjNCQzVFQkY2NjRBMQ==", // Reemplaza por tu valor real
+        Authorization: "Basic bWVnYUlUOjQ3MjNCQzVFQkY2NjRBMQ==",
       },
     })
       .then((response) => response.json())
       .then((data) => setData(data))
       .catch((error) => console.error("Error al cargar los datos:", error));
   }, [token]);
+  
+  // // Para depuración, puedes dejar este log
+  // console.log(data);
+
 
   const copyToClipboard = (text) => {
     navigator.clipboard
@@ -34,14 +38,17 @@ const ActivacionESIM = () => {
       });
   };
 
-  if (!data) {
-    return <p>Cargando datos...</p>;
-  }
+if (!data || !data.result || !data.result.activation) {
+  return <p>Cargando datos...</p>;
+}
 
   // Validar y armar el src base64 del QR
-  const qrBase64 = data.activation.qrCode.startsWith("data:image")
-    ? data.activation.qrCode
-    : `data:image/png;base64,${data.activation.qrCode}`;
+  const qrCodeValue = data.result.activation.qrCode || "";
+  const qrBase64 = qrCodeValue.startsWith("data:image")
+    ? qrCodeValue
+    : qrCodeValue
+    ? `data:image/png;base64,${qrCodeValue}`
+    : "";
 
   return (
     <div className="container activation-code-container">
@@ -54,7 +61,7 @@ const ActivacionESIM = () => {
         <div className="col-lg-5 qr-activation-code justify-content-center d-flex align-items-center">
           {imgError ? (
             <p>Error al cargar el QR.</p>
-          ) : (
+          ) : qrBase64 ? (
             <>
               {loading && <p>Cargando QR...</p>}
               <img
@@ -68,6 +75,8 @@ const ActivacionESIM = () => {
                 }}
               />
             </>
+          ) : (
+            <p>No hay QR disponible.</p>
           )}
         </div>
 
@@ -81,14 +90,14 @@ const ActivacionESIM = () => {
               <p className="mt-3 activation-code-txt">
                 Código de activación manual: <br /><br />
               </p>
-              
-              <p id="android-code">{data.activation.android}</p>
+              <p id="android-code">{data.result.activation.code || ""}</p>
               <button
                 className="mt-3 btn-activation-code d-flex text-center align-items-center"
-                onClick={() => copyToClipboard(data.activation.android)}
+                onClick={() => copyToClipboard(data.result.activation.code || "")}
+                disabled={!data.result.activation.code}
               >
                 Copiar
-                {copiedCode === data.activation.android && (
+                {copiedCode === data.result.activation.code && (
                   <i className="fas fa-check animated-check"></i>
                 )}
               </button>
